@@ -1,0 +1,152 @@
+.header {
+    width: 100%;
+    background-color: #ffffff;
+}
+
+.inner {
+    max-width: 1440px;
+    height: 160px;
+    margin: 0 auto;
+    padding: 0 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    height: 139px;
+    width: 186px;
+    flex-shrink: 0;
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+
+.search {
+    width: 360px;
+    height: 52px;
+    display: flex;
+    border: 1px solid #100E0E;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 0 84px 0 130px;
+    font-size: 18px;
+    color: #595858;
+}
+
+.search input {
+    flex: 1;
+    padding: 14px 20px;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    color: #595858;
+
+}
+
+.search button {
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.contacts {
+    display: flex;
+    align-items: center;
+    gap: 90px;
+}
+
+.phone {
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+    font-weight: bold;
+    color: #100E0E;
+}
+
+.phone p {
+    margin: 0;
+}
+
+.phone p + p {
+    margin-top: 8px;
+}
+
+.order {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    font-size: 16px;
+    line-height: 130%;
+    color: #100E0E;
+}
+
+.order span {
+    margin: 0;
+}
+
+.order span + span {
+    margin-top: 4px;
+}
+
+
+.desktop {
+    display: block;
+}
+
+.mobile {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .desktop {
+        display: none;
+    }
+
+    .mobile {
+        display: block;
+        background: #fff;
+        padding: 16px;
+    }
+
+    .mobileInner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .mobileLogo {
+        width: 80px;
+    }
+    .mobileLogo img {
+        width: 80px;
+        height: 80px;
+        object-fit: contain;
+        display: block;
+    }
+
+    .mobileOrder {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .mobileOrderText {
+        font-size: 12px;
+        font-weight: bold;
+        line-height: 1.3;
+        color: #100E0E;
+    }
+
+    .mobileOrderText p {
+        margin: 0;
+    }
+
+}

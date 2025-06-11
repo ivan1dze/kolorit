@@ -1,0 +1,167 @@
+.wrapper {
+    width: 100%;
+    color: #fff;
+}
+
+.container {
+    max-width: 1216px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    background-color: #020202;
+}
+
+.textBlock {
+    max-width: 620px;
+    padding: 28px 0 0 38px ;
+    z-index: 2;
+    box-sizing: border-box;
+}
+
+.textBlock h2 {
+    font-size: 28px;
+    font-weight: 400;
+    margin-bottom: 28px;
+}
+
+.textBlock h2 span {
+    color: #F2E30D;
+    font-weight: 500;
+}
+
+.sub {
+    color: #F2E30D;
+    margin-bottom: 50px;
+    font-size: 18px;
+}
+
+.textBlock ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px 0;
+    line-height: 1.6;
+    font-size: 18px;
+}
+
+.textBlock li {
+    margin-bottom: 6px;
+}
+
+.button {
+    background-color: #F2E30D;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 40px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.button:hover {
+    background-color: #e6d400;
+}
+
+.imageWrapper {
+    position: relative;
+    width: 100%;
+    height: 520px;
+    z-index: 1;
+}
+
+/* Версии отображения */
+.desktop {
+    display: block;
+}
+
+.mobile {
+    display: none;
+}
+
+/* Мобильная структура */
+.mobileContainer {
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 16px;
+}
+.mobilecontent {
+    background-color: #020202;
+    color: #fff;
+}
+
+.mobileText {
+    padding: 32px 16px;
+}
+
+.mobileText2 {
+    padding: 0px 16px 16px 16px;
+}
+
+.mobileContainer h2 {
+    font-size: 28px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.mobileContainer h2 span {
+    color: #F2E30D;
+    font-weight: 500;
+}
+
+.mobileContainer .sub {
+    font-size: 12px;
+    color: #F2E30D;
+    margin-bottom: 1px;
+}
+
+.mobileContainer ul {
+    list-style: none;
+    font-size: 12px;
+    line-height: 1.6;
+    margin: 24px 0;
+    padding: 0;
+}
+
+.mobileImage {
+    width: 100%;
+    height: 280px; /* или сколько тебе нужно */
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 24px;
+}
+
+.mobileImage img {
+    object-fit: cover;
+    object-position: bottom;
+    width: 100%;
+    height: 85%;
+    transform: scale(1.6);
+}
+
+.mobileImage::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+            180deg,
+            #020202 0%,
+            rgba(0, 0, 0, 0) 80%
+    );
+    pointer-events: none;
+    z-index: 2;
+}
+
+
+/* 🔁 Переключение между версиями */
+@media (max-width: 768px) {
+    .desktop {
+        display: none;
+    }
+
+    .mobile {
+        display: block;
+    }
+}
+
