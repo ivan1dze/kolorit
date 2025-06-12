@@ -113,7 +113,8 @@
     .mobile {
         display: block;
         background: #fff;
-        padding: 16px;
+        padding: 5px 16px 0 16px;
+
     }
 
     .mobileInner {
