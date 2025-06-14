@@ -1,10 +1,13 @@
 import Image from 'next/image';
 import styles from './Header.module.css';
+import { getContacts } from '../lib/getContacts';
+import { Contact } from '../types/contact';
 
-const Header = () => {
+const Header = async () => {
+    const contacts: Contact[] = await getContacts();
+
     return (
         <header className={styles.header}>
-            {/* 💻 ПК-версия */}
             <div className={styles.desktop}>
                 <div className={styles.inner}>
                     <div className={styles.logo}>
@@ -27,8 +30,13 @@ const Header = () => {
 
                     <div className={styles.contacts}>
                         <div className={styles.phone}>
-                            <p>+375 (29) 647-80-44</p>
-                            <p>+375 (25) 779-00-42</p>
+                            {contacts.map((contact) => (
+                                <p key={contact.id}>
+                                    <a href={`tel:${contact.phone.replace(/\s+/g, '')}`}>
+                                        {contact.phone}
+                                    </a>
+                                </p>
+                            ))}
                         </div>
                         <div className={styles.order}>
                             <span>Прием заказов</span>
@@ -38,7 +46,6 @@ const Header = () => {
                 </div>
             </div>
 
-            {/* 📱 Мобильная версия */}
             <div className={styles.mobile}>
                 <div className={styles.mobileInner}>
                     <div className={styles.mobileLogo}>
