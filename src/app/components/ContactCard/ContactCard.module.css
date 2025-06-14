@@ -1,0 +1,135 @@
+.wrapper {
+    width: 1216px;
+    height: 545px;
+    display: flex;
+    gap: 24px;
+    padding: 24px 0;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.content {
+    padding: 32px;
+    gap: 24px;
+}
+
+.left {
+    width: 495px;
+    background: white;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.right {
+    flex: 1;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.title {
+    font-size: 34px;
+    margin: 0 0 20px;
+}
+
+.org {
+    color: rgba(89, 88, 88, 1);
+    font-size: 18px;
+    margin-bottom: 24px;
+}
+
+.phones a {
+    font-weight: bold;
+    font-size: 18px;
+    text-decoration: none;
+    color: black;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.email a {
+    color: black;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.address {
+    margin-top: 36px;
+    font-size: 18px;
+    line-height: 1.4;
+}
+
+.line {
+    border: none;
+    border-top: 1px solid rgba(242, 227, 13, 1);
+}
+
+.schedule {
+    display: flex;
+    justify-content: space-between;
+    padding: 32px;
+}
+
+.scheduleTitle {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 4px;
+}
+
+.right iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+}
+
+
+@media (max-width: 768px) {
+    .wrapper {
+        width: 95%;
+        flex-direction: column;
+        padding: 16px 0;
+        height: auto; /* ✅ важно */
+    }
+
+    .left {
+        width: 100%;
+    }
+
+    .right {
+        width: 100%;
+        height: 400px; /* ✅ жёсткая высота */
+        flex: unset;
+    }
+
+    .right iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        display: block;
+    }
+
+    .content {
+        padding: 16px;
+        gap: 16px;
+    }
+
+    .schedule {
+        flex-direction: column;
+        gap: 16px;
+        padding: 16px;
+    }
+
+    .title {
+        font-size: 26px;
+    }
+
+    .org,
+    .phones a,
+    .email a,
+    .address,
+    .scheduleTitle {
+        font-size: 14px;
+    }
+}
