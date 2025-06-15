@@ -1,0 +1,36 @@
+.page {
+    padding-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.imageWrapper {
+    margin: 10px auto 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    max-width: 1216px;
+}
+
+.image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* 🔽 Адаптив под мобилку */
+@media (max-width: 768px) {
+    .imageWrapper {
+        width: 368px;
+        height: 175px;
+        border-radius: 8px;
+    }
+
+    .image {
+        width: 368px;
+        height: 175px;
+        object-fit: cover;
+    }
+}
