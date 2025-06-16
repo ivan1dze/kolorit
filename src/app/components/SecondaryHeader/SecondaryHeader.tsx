@@ -5,9 +5,12 @@ import Image from 'next/image';
 import { useEffect, useState, useRef } from 'react';
 import styles from './SecondaryHeader.module.css';
 import { getCategories, Category } from '../lib/getCategories';
+import { getContacts } from '../lib/getContacts';
+import { Contact } from '../types/contact';
 
 const SecondaryHeader = () => {
     const [categories, setCategories] = useState<Category[]>([]);
+    const [contacts, setContacts] = useState<Contact[]>([]);
     const [showDropdown, setShowDropdown] = useState(false);
     const [activeParentId, setActiveParentId] = useState<number | null>(null);
 
@@ -17,6 +20,10 @@ const SecondaryHeader = () => {
         getCategories().then(data => {
             const roots = data.filter(c => c.parent === null);
             setCategories(roots);
+        });
+
+        getContacts().then(data => {
+            setContacts(data);
         });
     }, []);
 
@@ -31,10 +38,11 @@ const SecondaryHeader = () => {
         dropdownCloseTimeout = setTimeout(() => {
             setShowDropdown(false);
             setActiveParentId(null);
-        }, 200); // 200 мс пауза
+        }, 200);
     };
 
     const activeCategory = categories.find(cat => cat.id === activeParentId);
+    const phone = contacts[0]?.phone?.replace(/[^+\d]/g, ''); // форматируем номер: убираем пробелы, скобки и тире
 
     return (
         <div className={styles.wrapper}>
@@ -92,9 +100,11 @@ const SecondaryHeader = () => {
                 </div>
 
                 <div className={styles.actions}>
-                    <button className={styles.phoneBtn}>
-                        <Image src="/components/header/phone.png" alt="phone" width={24} height={24} />
-                    </button>
+                    {phone && (
+                        <a href={`tel:${phone}`} className={styles.phoneBtn}>
+                            <Image src="/components/header/phone.png" alt="phone" width={24} height={24} />
+                        </a>
+                    )}
                     <button className={styles.cartBtn}>
                         <Image src="/components/header/cart.png" alt="cart" width={24} height={24} />
                         <span className={styles.badge}>12</span>
