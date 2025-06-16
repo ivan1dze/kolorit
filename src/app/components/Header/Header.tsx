@@ -2,6 +2,7 @@ import Image from 'next/image';
 import styles from './Header.module.css';
 import { getContacts } from '../lib/getContacts';
 import { Contact } from '../types/contact';
+import Link from 'next/link';
 
 const Header = async () => {
     const contacts: Contact[] = await getContacts();
@@ -11,14 +12,16 @@ const Header = async () => {
             <div className={styles.desktop}>
                 <div className={styles.inner}>
                     <div className={styles.logo}>
-                        <Image
-                            src="/components/header/icon1.png"
-                            alt="Логотип"
-                            width={186}
-                            height={139}
-                            unoptimized
-                            priority
-                        />
+                        <Link href="/">
+                            <Image
+                                src="/components/header/icon1.png"
+                                alt="Логотип"
+                                width={186}
+                                height={139}
+                                unoptimized
+                                priority
+                            />
+                        </Link>
                     </div>
 
                     <div className={styles.search}>
@@ -49,6 +52,7 @@ const Header = async () => {
             <div className={styles.mobile}>
                 <div className={styles.mobileInner}>
                     <div className={styles.mobileLogo}>
+                        <Link href="/">
                         <Image
                             src="/components/header/icon1.png"
                             alt="Логотип"
@@ -57,6 +61,7 @@ const Header = async () => {
                             unoptimized
                             priority
                         />
+                        </Link>
                     </div>
                     <div className={styles.mobileOrder}>
                         <Image
