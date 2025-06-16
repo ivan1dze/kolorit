@@ -165,3 +165,44 @@
     }
 }
 
+.brands {
+    max-width: 1216px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 20px;
+    padding: 52px 38px 53px 38px;
+    margin: 0 auto;
+}
+
+.brandItem {
+    text-align: center;
+}
+
+.brandItem img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* 📱 Мобильная адаптация */
+@media (max-width: 768px) {
+    .brands {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 24px;
+        padding: 32px 16px;
+    }
+
+    .brandItem {
+        width: calc(33.333% - 16px);
+        max-width: 100px;
+    }
+
+    /* если картинки слишком крупные, можно уменьшить */
+    .brandItem img {
+        width: 100%;
+        height: auto;
+    }
+}
+

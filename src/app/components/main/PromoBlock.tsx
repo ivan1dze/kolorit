@@ -2,6 +2,8 @@ import styles from './css/PromoBlock.module.css';
 import Image from 'next/image';
 
 const PromoBlock = () => {
+    const brandLogos = ['duxone', 'lechler', 'jetapro', 'novol', 'smirdex'];
+
     return (
         <section className={styles.wrapper}>
             {/* 💻 Десктопная версия */}
@@ -37,34 +39,48 @@ const PromoBlock = () => {
             <div className={styles.mobile}>
                 <div className={styles.mobileContainer}>
                     <div className={styles.mobilecontent}>
-                    <div className={styles.mobileText}>
-                    <h2>
-                        Организация <span>«ПРОФАВТОСТИЛЬ»</span>
-                    </h2>
-                    <p className={styles.sub}>
-                        — официальный представитель и поставщик лакокрасочных материалов для кузовного ремонта
-                    </p>
+                        <div className={styles.mobileText}>
+                            <h2>
+                                Организация <span>«ПРОФАВТОСТИЛЬ»</span>
+                            </h2>
+                            <p className={styles.sub}>
+                                — официальный представитель и поставщик лакокрасочных материалов для кузовного ремонта
+                            </p>
+                        </div>
+                        <div className={styles.mobileImage}>
+                            <Image
+                                src="/components/main/promo-car.png"
+                                alt="Цветная машина"
+                                width={400}
+                                height={300}
+                                className={styles.carImage}
+                            />
+                        </div>
+                        <div className={styles.mobileText2}>
+                            <ul>
+                                <li>— Продукция ведущих мировых производителей</li>
+                                <li>— Контроль качества и сертифицированные товары</li>
+                                <li>— Профессиональный подбор красок включая эко-водные системы</li>
+                                <li>— Автохимия масла запчасти</li>
+                            </ul>
+                            <button className={styles.button}>УЗНАТЬ ЕЩЁ</button>
+                        </div>
                     </div>
-                    <div className={styles.mobileImage}>
+                </div>
+            </div>
+
+            {/* 🔻 Бренды — общий блок для всех версий */}
+            <div className={styles.brands}>
+                {brandLogos.map((name, index) => (
+                    <div className={styles.brandItem} key={index}>
                         <Image
-                            src="/components/main/promo-car.png"
-                            alt="Цветная машина"
-                            width={400}
-                            height={300}
-                            className={styles.carImage}
+                            src={`/components/main/brands/${name}.png`}
+                            alt={name}
+                            width={190}
+                            height={50}
                         />
                     </div>
-                    <div className={styles.mobileText2}>
-                    <ul>
-                        <li>— Продукция ведущих мировых производителей</li>
-                        <li>— Контроль качества и сертифицированные товары</li>
-                        <li>— Профессиональный подбор красок включая эко-водные системы</li>
-                        <li>— Автохимия масла запчасти</li>
-                    </ul>
-                    <button className={styles.button}>УЗНАТЬ ЕЩЁ</button>
-                </div>
-                </div>
-                </div>
+                ))}
             </div>
         </section>
     );
