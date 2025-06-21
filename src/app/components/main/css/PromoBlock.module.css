@@ -71,7 +71,6 @@
     z-index: 1;
 }
 
-/* Версии отображения */
 .desktop {
     display: block;
 }
@@ -126,7 +125,7 @@
 
 .mobileImage {
     width: 100%;
-    height: 280px; /* или сколько тебе нужно */
+    height: 280px;
     position: relative;
     overflow: hidden;
     margin-bottom: 24px;
