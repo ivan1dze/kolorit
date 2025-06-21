@@ -12,7 +12,7 @@ export default function DeliveryPage() {
                 <input type="checkbox" id="pickup" className={styles.toggle} />
                 <label htmlFor="pickup" className={styles.label}>
                     Самовывоз
-                    <img src="/components/header/arrow-down2.png" alt="arrow" className={styles.arrow} />
+                    <img src="/components/header/arrow-down2.svg" alt="arrow" className={styles.arrow} />
                 </label>
                 <div className={styles.content}>
                     <p>При самовывозе оплату можно произвести наличными денежными средствами или картой на месте выдачи товара.<br />
@@ -27,7 +27,7 @@ export default function DeliveryPage() {
                 <input type="checkbox" id="belpost" className={styles.toggle} />
                 <label htmlFor="belpost" className={styles.label}>
                     Доставка в пункты выдачи РУП «Белпочта»
-                    <img src="/components/header/arrow-down2.png" alt="arrow" className={styles.arrow} />
+                    <img src="/components/header/arrow-down2.svg" alt="arrow" className={styles.arrow} />
                 </label>
                 <div className={styles.content}>
                     <p><strong>Доставка</strong> осуществляется <strong>наложным платежом</strong> по территории Республики Беларусь.<br />
@@ -51,7 +51,7 @@ export default function DeliveryPage() {
                 <input type="checkbox" id="europost" className={styles.toggle} />
                 <label htmlFor="europost" className={styles.label}>
                     Доставка в пункты выдачи Европочты
-                    <img src="/components/header/arrow-down2.png" alt="arrow" className={styles.arrow} />
+                    <img src="/components/header/arrow-down2.svg" alt="arrow" className={styles.arrow} />
                 </label>
                 <div className={styles.content}>
                     <p><strong>Доставка</strong> осуществляется <strong>наложным платежом</strong> по территории Республики Беларусь.<br />
