@@ -1,11 +1,51 @@
+'use client';
+
 import Image from 'next/image';
 import styles from './Header.module.css';
-import { getContacts } from '../lib/getContacts';
-import { Contact } from '../types/contact';
 import Link from 'next/link';
+import { useEffect, useRef, useState } from 'react';
 
-const Header = async () => {
-    const contacts: Contact[] = await getContacts();
+const Header = () => {
+    const [contacts, setContacts] = useState<{ id: number; phone: string }[]>([]);
+    const [query, setQuery] = useState('');
+    const [results, setResults] = useState<any[]>([]);
+    const [showDropdown, setShowDropdown] = useState(false);
+    const inputRef = useRef<HTMLInputElement>(null);
+
+    // Загружаем контакты
+    useEffect(() => {
+        fetch('http://localhost/api/contacts/')
+            .then((res) => res.json())
+            .then(setContacts);
+    }, []);
+
+    // Поиск
+    useEffect(() => {
+        const delay = setTimeout(() => {
+            if (query.length > 1) {
+                fetch(`http://localhost/api/product/search/?search=${query}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log('search result:', data);
+                        setResults(data);
+                    });
+            } else {
+                setResults([]);
+            }
+        }, 300);
+        return () => clearTimeout(delay);
+    }, [query]);
+
+    // Клик вне поиска
+    useEffect(() => {
+        const handleClickOutside = (e: MouseEvent) => {
+            if (!inputRef.current?.contains(e.target as Node)) {
+                setShowDropdown(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
 
     return (
         <header className={styles.header}>
@@ -24,11 +64,55 @@ const Header = async () => {
                         </Link>
                     </div>
 
-                    <div className={styles.search}>
-                        <input type="text" placeholder="Поиск" />
+                    <div className={styles.search} ref={inputRef}>
+                        <input
+                            type="text"
+                            placeholder="Поиск"
+                            value={query}
+                            onChange={(e) => {
+                                setQuery(e.target.value);
+                                setShowDropdown(true);
+                            }}
+                            onFocus={() => setShowDropdown(true)}
+                        />
                         <button className={styles.searchButton}>
-                            <img src="/components/header/search.png" alt="Поиск" width={24} height={24} />
+                            <Image
+                                src="/components/header/search.png"
+                                alt="Поиск"
+                                width={24}
+                                height={24}
+                            />
                         </button>
+
+                        {showDropdown && results.length > 0 && (
+                            <div className={styles.searchDropdown}>
+                                {results.slice(0, 3).map((item) => (
+                                    <Link
+                                        href={`/products/${item.id}`}
+                                        key={item.id}
+                                        className={styles.result}
+                                        onClick={() => {
+                                            setQuery('');
+                                            setShowDropdown(false);
+                                        }}
+                                    >
+                                        <Image
+                                            src={item.photos[0]?.image || '/placeholder.jpg'}
+                                            alt={item.name}
+                                            width={100}
+                                            height={100}
+                                            className={styles.resultImage}
+                                        />
+                                        <div className={styles.resultInfo}>
+                                            <p className={styles.resultName}>{item.name}</p>
+                                            <p className={styles.resultPrice}>
+                                                {parseFloat(item.price).toFixed(2)} BYN
+                                            </p>
+                                        </div>
+                                    </Link>
+                                ))}
+                            </div>
+                        )}
                     </div>
 
                     <div className={styles.contacts}>
@@ -53,14 +137,14 @@ const Header = async () => {
                 <div className={styles.mobileInner}>
                     <div className={styles.mobileLogo}>
                         <Link href="/">
-                        <Image
-                            src="/components/header/icon1.png"
-                            alt="Логотип"
-                            width={80}
-                            height={80}
-                            unoptimized
-                            priority
-                        />
+                            <Image
+                                src="/components/header/icon1.png"
+                                alt="Логотип"
+                                width={80}
+                                height={80}
+                                unoptimized
+                                priority
+                            />
                         </Link>
                     </div>
                     <div className={styles.mobileOrder}>

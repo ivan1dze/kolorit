@@ -1,0 +1,384 @@
+.wrapper {
+    max-width: 1216px;
+    margin: 0 auto;
+    display: flex;
+    gap: 32px;
+
+    box-sizing: border-box;
+}
+
+.wrapper {
+    display: flex;
+    align-items: flex-start; /* ← теперь .right подстраивается под свой контент */
+}
+
+.left {
+    flex: 1;
+    padding-bottom: 60px;
+}
+.heading {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+.heading span {
+    font-weight: 400;
+    font-size: 16px;
+    margin-left: 8px;
+    color: #888;
+}
+
+.right {
+    width: 340px;
+    height: auto;
+    background: #fff;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 50px
+}
+
+.totalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+}
+
+.totalLeft {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+}
+
+.totalLabel {
+    font-size: 22px;
+    color: #100E0E;
+}
+
+.totalItems {
+    font-size: 12px;
+    color: #999;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.total {
+    font-size: 22px;
+    font-weight: 700;
+    color: #100E0E;
+    white-space: nowrap;
+}
+
+
+.productCard {
+    display: flex;
+    align-items: flex-start;
+    background: #FFFFFF;
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    position: relative;
+    gap: 16px;
+}
+
+.imageBox {
+    position: relative;
+    min-width: 80px;
+    height: 120px;
+    flex-shrink: 0;
+}
+
+.productImage {
+    border-radius: 6px;
+    object-fit: contain;
+    width: 120px;
+    height: 120px;
+}
+
+.removeBtn {
+    position: absolute;
+    top: 14px;
+    right: 11px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 2px;
+}
+
+.cardContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2px 0;
+    min-height: 80px;
+}
+
+.cardTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.title {
+    font-size: 18px;
+    font-weight: 500;
+    color: #100E0E;
+    text-decoration: none;
+    margin: 0;
+    line-height: 1.3;
+    max-width: calc(100% - 24px);
+    display: inline-block;
+}
+
+.attributes {
+    font-size: 13px;
+    color: #888;
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.priceBlock {
+    align-self: flex-end;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 4px;
+    text-align: right;
+    line-height: 1;
+}
+
+.quantityText {
+    font-size: 18px;
+    color: #100E0E;
+    font-weight: 700;
+    margin-right: 10px;
+}
+
+.priceText {
+    font-size: 26px;
+    font-weight: 700;
+    color: #100E0E;
+}
+
+
+.totalBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+
+.delivery {
+    display: flex;
+    width: 100%;
+    background: #f4f4f4;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.delivery button {
+    flex: 1;
+    padding: 10px 0;
+    font-size: 16px;
+    font-weight: 500;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.delivery button:not(:last-child) {
+    border-right: 1px solid #ccc;
+}
+
+.delivery button.active {
+    background: #fff;
+    color: #000;
+}
+
+
+.deliveryNote {
+    font-size: 12px;
+    color: #666;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+
+.input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.submitBtn {
+    background: #f2e30d;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.submitBtn:hover {
+    background: #e5d900;
+}
+
+.privacy {
+    font-size: 11px;
+    color: #777;
+}
+
+.privacy a {
+    color: #000;
+    text-decoration: underline;
+}
+
+.confirmBlock {
+    width: 100%;
+    display: flex;
+    gap: 32px;
+    max-width: 1216px;
+    margin: 0 auto;
+    margin-top: 40px;
+    align-items: flex-start;
+    box-sizing: border-box;
+}
+
+.confirmBlock .left {
+    flex: 1;
+}
+
+.confirmBlock .right {
+    width: 340px;
+    background: #fff;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.confirmBlock .productCard {
+    display: flex;
+    align-items: flex-start;
+    background: #FFFFFF;
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    position: relative;
+    gap: 16px;
+}
+
+.confirmBlock p {
+    margin: 0;
+    font-size: 14px;
+    color: #000;
+    line-height: 1.5;
+}
+
+.success {
+    font-weight: bold;
+    color: green;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.schedule {
+    font-size: 13px;
+    color: #666;
+    margin-top: 16px;
+}
+
+.schedule p {
+    margin: 4px 0;
+}
+
+.confirmRight {
+    background: #fff;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.confirmRight .row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.confirmRight .row span:last-child {
+    font-weight: 700;
+}
+
+.confirmRight .label {
+    font-weight: normal;
+    color: #555;
+}
+
+.confirmRight .value {
+    font-weight: 700;
+    color: #000;
+}
+
+.confirmRight .address {
+    margin-top: -4px;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #000;
+    line-height: 1.4;
+}
+
+.confirmRight .success {
+    margin-top: 8px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.confirmRight .note {
+    color: #000;
+    font-size: 13px;
+}
+
+.confirmRight .sectionTitle {
+    font-size: 14px;
+    font-weight: 600;
+    color: #000;
+}
+
+.confirmRight .contactList {
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.confirmRight .contactList span {
+    display: inline-block;
+    min-width: 130px;
+}

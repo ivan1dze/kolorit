@@ -8,6 +8,7 @@ import { getCategories, Category } from '../lib/getCategories';
 import { getContacts } from '../lib/getContacts';
 import { Contact } from '../types/contact';
 import { useHasMounted } from '../lib/useHasMounted';
+import { useCart } from '@/app/components/CartContext';
 
 const SecondaryHeader = () => {
     const hasMounted = useHasMounted();
@@ -23,6 +24,29 @@ const SecondaryHeader = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isCatalogOpen, setIsCatalogOpen] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState<Category | null>(null);
+
+    const [query, setQuery] = useState('');
+    const [searchResults, setSearchResults] = useState<any[]>([]);
+    const [showSearchResults, setShowSearchResults] = useState(false);
+    const [showSearchInput, setShowSearchInput] = useState(false);
+    const searchInputRef = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            if (query.length >= 2) {
+                fetch(`http://localhost/api/product/search/?search=${query}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        setSearchResults(data);
+                        setShowSearchResults(true);
+                    });
+            } else {
+                setShowSearchResults(false);
+            }
+        }, 400);
+
+        return () => clearTimeout(timeout);
+    }, [query]);
 
     useEffect(() => {
         getCategories().then(data => {
@@ -64,8 +88,9 @@ const SecondaryHeader = () => {
         setSelectedCategory(null);
     };
 
-    if (!hasMounted) return <div style={{ display: 'none' }} />;
+    const { count } = useCart();
 
+    if (!hasMounted) return <div style={{ display: 'none' }} />;
 
     return (
         <>
@@ -126,6 +151,7 @@ const SecondaryHeader = () => {
                         <Link href="/delivery">Доставка и оплата</Link>
                         <Link href="/partners">Сотрудничество</Link>
                         <Link href="/blog">Блог</Link>
+                        <Link href="/stock">Акции</Link>
                         <Link href="/contacts">Контакты</Link>
                     </div>
 
@@ -135,10 +161,10 @@ const SecondaryHeader = () => {
                                 <Image src="/components/header/phones.svg" alt="phone" width={24} height={24} />
                             </a>
                         )}
-                        <button className={styles.cartBtn}>
+                        <Link href="/cart" className={styles.cartBtn}>
                             <Image src="/components/header/carts.svg" alt="cart" width={24} height={24} />
-                            <span className={styles.badge}>12</span>
-                        </button>
+                            {count > 0 && <span className={styles.badge}>{count}</span>}
+                        </Link>
                     </div>
                 </nav>
             </div>
@@ -146,41 +172,108 @@ const SecondaryHeader = () => {
             {/* 📱 MOBILE */}
             <div className={styles.mobileHeader}>
                 <div className={styles.iconsleft}>
-                <button onClick={() => setIsMobileMenuOpen(true)} className={styles.iconBtn}>
-                    <Image src="/components/header/bgs.svg" alt="menu" width={24} height={24} />
-                </button>
-
-                <button onClick={() => setIsCatalogOpen(true)} className={styles.catalogButton}>
-                    Каталог
-                    <Image src="/components/header/arrow-rights.svg" alt="arrow" width={21} height={15} />
-                </button>
+                    <button onClick={() => setIsMobileMenuOpen(true)} className={styles.iconBtn}>
+                        <Image src="/components/header/bgs.svg" alt="menu" width={24} height={24} />
+                    </button>
+                    <button onClick={() => setIsCatalogOpen(true)} className={styles.catalogButton}>
+                        Каталог
+                        <Image src="/components/header/arrow-rights.svg" alt="arrow" width={21} height={15} />
+                    </button>
                 </div>
                 <div className={styles.iconsRight}>
-                    <button className={styles.iconBtn}>
-                        <Image src="/components/header/search-whs.svg" alt="search" width={24} height={24} />
+                    <button
+                        className={styles.iconBtn}
+                        onClick={() => {
+                            if (showSearchInput) {
+                                setShowSearchInput(false);
+                                setShowSearchResults(false);
+                                setQuery('');
+                                setSearchResults([]);
+                            } else {
+                                setShowSearchInput(true);
+                                setTimeout(() => searchInputRef.current?.focus(), 100);
+                            }
+                        }}
+                    >
+                        <Image
+                            src={
+                                showSearchInput
+                                    ? '/components/header/close-w.svg'
+                                    : '/components/header/search-whs.svg'
+                            }
+                            alt="search"
+                            width={24}
+                            height={24}
+                        />
                     </button>
-
                     {phone && (
                         <a href={`tel:${phone}`} className={styles.iconBtn}>
                             <Image src="/components/header/phones.svg" alt="phone" width={24} height={24} />
                         </a>
                     )}
-
-                    <button className={styles.iconBtn}>
+                    <Link href="/cart" className={styles.cartBtn}>
                         <Image src="/components/header/carts.svg" alt="cart" width={24} height={24} />
-                        <span className={styles.badge}>12</span>
-                    </button>
+                        {count > 0 && <span className={styles.badge}>{count}</span>}
+                    </Link>
                 </div>
             </div>
+
+            {showSearchInput && (
+                <div className={styles.searchWrapper}>
+                    <input
+                        type="text"
+                        className={styles.searchInput}
+                        placeholder="Найти товар"
+                        value={query}
+                        onChange={(e) => setQuery(e.target.value)}
+                        ref={searchInputRef}
+                    />
+                </div>
+            )}
+
+            {showSearchResults && (
+                <div className={styles.searchResults}>
+                    {searchResults.slice(0, 3).map(product => (
+                        <Link
+                            key={product.id}
+                            href={`/products/${product.id}`}
+                            className={styles.resultItem}
+                            onClick={() => {
+                                setShowSearchInput(false);
+                                setShowSearchResults(false);
+                                setQuery('');
+                            }}
+                        >
+                            <div className={styles.resultImage}>
+                                <Image
+                                    src={product.photos?.[0]?.image || '/no-image.jpg'}
+                                    alt={product.name}
+                                    width={120}
+                                    height={80}
+                                    style={{ objectFit: 'cover' }}
+                                />
+                            </div>
+                            <div className={styles.resultInfo}>
+                                <div className={styles.resultName}>{product.name}</div>
+                                <div className={styles.resultMeta}>
+                                    {product.filter_values?.map((f: { value: string }) => f.value).join(', ')}
+                                </div>
+                                <div className={styles.resultPrice}>{parseFloat(product.price).toFixed(2)} BYN</div>
+                            </div>
+                        </Link>
+                    ))}
+                </div>
+            )}
 
             {isMobileMenuOpen && (
                 <div className={styles.sideMenu}>
                     <button onClick={handleCloseAll} className={styles.closeBtn}>×</button>
                     <nav className={styles.mobileNav}>
-                        <Link href="/delivery">Доставка и оплата</Link>
-                        <Link href="/partners">Сотрудничество</Link>
-                        <Link href="/blog">Блог</Link>
-                        <Link href="/contacts">Контакты</Link>
+                        <Link href="/delivery" onClick={handleCloseAll}>Доставка и оплата</Link>
+                        <Link href="/partners" onClick={handleCloseAll}>Сотрудничество</Link>
+                        <Link href="/blog" onClick={handleCloseAll}>Блог</Link>
+                        <Link href="/stock" onClick={handleCloseAll}>Акции</Link>
+                        <Link href="/contacts" onClick={handleCloseAll}>Контакты</Link>
                     </nav>
                     <div className={styles.bottomIcons}>
                         <button className={styles.iconBtn}>

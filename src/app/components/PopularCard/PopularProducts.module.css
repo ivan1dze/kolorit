@@ -1,0 +1,124 @@
+.wrapper {
+    background: #FFFFFF;
+}
+
+.wrapper2 {
+    max-width: 1216px;
+    margin: 0 auto 60px;
+    padding: 0 12px;
+}
+
+.title {
+    font-size: 33px;
+
+    margin-bottom: 30px;
+    padding-top: 60px;
+    /*text-align: center;*/
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 289px);
+    gap: 20px;
+    justify-content: center;
+    padding-bottom: 30px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: box-shadow 0.2s ease;
+    height: 448px;
+    max-width: 289px;
+    align-items: center;
+}
+
+.card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.imageWrapper {
+    width: 100%;
+    height: 200px;
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card h4 {
+    font-size: 16px;
+    margin: 20px 0 12px;
+    flex: 1;
+}
+
+.card p {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+
+.card button {
+    padding: 10px 40px;
+    font-size: 16px;
+    border: 1px solid #000;
+    background: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 168px;
+}
+
+.card button:hover {
+    background-color: #F2E30D;
+}
+
+
+
+@media (max-width: 1000px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        padding: 0 12px 30px;
+    }
+
+    .card {
+        width: 100%;
+        height: auto;
+        padding: 12px;
+    }
+
+    .card h4 {
+        font-size: 14px;
+        margin: 10px 0;
+    }
+
+    .card p {
+        font-size: 18px;
+        margin: 10px 0;
+    }
+
+    .card button {
+        padding: 8px 20px;
+        font-size: 14px;
+        width: 100%;
+    }
+
+    .title {
+        font-size: 24px;
+        padding-top: 40px;
+        margin-bottom: 20px;
+    }
+}

@@ -1,5 +1,5 @@
 import styles from './Delivery.module.css';
-import ContactCard from "@/app/components/ContactCard/ContactCard";
+import OntactCardClient from "@/app/components/ContactCard/СontactCardClient";
 
 export default function DeliveryPage() {
     return (
@@ -80,8 +80,6 @@ export default function DeliveryPage() {
                     <li>Условия могут меняться. Точную информацию сообщит специалист при подтверждении заказа.</li>
                 </ul>
             </section>
-
-            <ContactCard/>
         </main>
 
     );

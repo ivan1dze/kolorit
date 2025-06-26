@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import styles from './PartnersPage.module.css';
-import ContactCard from "@/app/components/ContactCard/ContactCard";
+import OntactCardClient from "@/app/components/ContactCard/СontactCardClient";
 
 export default function PartnersPage() {
     return (
@@ -104,7 +104,6 @@ export default function PartnersPage() {
                     className={styles.image}
                 />
             </div>
-            <ContactCard/>
         </main>
     );
 }

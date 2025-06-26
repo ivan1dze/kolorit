@@ -1,13 +1,10 @@
-import ContactCard from "../components/ContactCard/ContactCard";
+import OntactCardClient from "../components/ContactCard/СontactCardClient";
 import Image from 'next/image';
 import styles from './ContactsPage.module.css';
 
 export default function ContactsPage() {
     return (
         <main className={styles.page}>
-            <div className={styles.cardWrapper}>
-                <ContactCard />
-            </div>
 
             <div className={styles.imageWrapper}>
                 <Image

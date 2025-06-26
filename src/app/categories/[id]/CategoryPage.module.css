@@ -4,12 +4,16 @@
     margin: 0 auto;
 }
 
-.sidebar {
-    width: 260px;
+.breadcrumbs {
+    font-size: 14px;
+    color: #8D8D8D;
+    max-width: 1216px;
+    margin: 0 auto 20px auto;
 }
 
-.filter {
-    margin-bottom: 24px;
+.breadcrumbs a {
+    color: #8D8D8D;
+    text-decoration: none;
 }
 
 .grid {
@@ -30,6 +34,7 @@
     flex-direction: column;
     justify-content: space-between;
     transition: box-shadow 0.2s ease;
+    color: inherit;
 }
 
 .card:hover {
@@ -39,6 +44,7 @@
 .imageWrapper {
     width: 100%;
     height: 200px;
+    position: relative; /* важно для fill */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -46,11 +52,16 @@
     border-radius: 4px;
 }
 
+.productImage {
+    object-fit: contain;
+}
+
 .imageWrapper img {
     width: auto;
     height: 100%;
     object-fit: contain;
 }
+
 
 .card h4 {
     font-size: 18px;
@@ -82,3 +93,308 @@
 .card button:hover {
     background-color: #F2E30D;
 }
+
+.sidebar {
+    background: #FFFFFF;
+    padding: 24px 32px;
+    border-radius: 8px;
+    width: 289px;
+    margin-right: 20px;
+    max-height: 90vh;
+    overflow-y: auto;
+
+}
+
+.filter {
+    margin-bottom: 32px;
+}
+
+.filterTitle {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+.checkboxLabel {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    margin-bottom: 10px;
+    gap: 8px;
+}
+
+.checkboxLabel input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #F2E30D;
+}
+
+.buttonsBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 24px;
+}
+
+.showAllBtn {
+    margin-top: 10px;
+    padding: 8px 12px;
+    font-size: 14px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.priceInputs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.priceInputs input {
+    flex: 1;
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.applyBtn {
+    background: #f2e30d;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 41px;
+    font-size: 14px;
+    margin-top: 16px;
+    cursor: pointer;
+}
+
+.resetBtn {
+    background: none;
+    border: none;
+    color: #555;
+    text-decoration: underline;
+    font-size: 12px;
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+/* Показываем кнопку "Показать ещё" по центру */
+.showMoreWrapper {
+    grid-column: span 3;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.showMoreBtn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.showMoreBtn:hover {
+    background-color: #f2e30d;
+}
+
+/* Корректная высота фильтров */
+.sidebar {
+    background: #FFFFFF;
+    padding: 24px 32px;
+    border-radius: 8px;
+    width: 289px;
+    margin-right: 20px;
+    align-self: flex-start;
+}
+
+
+.dropdownWrapper {
+    position: relative;
+}
+
+.dropdown {
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    max-width: 400px;
+    min-width: 300px;
+    z-index: 9999;
+}
+
+
+.page {
+    position: relative;
+}
+
+
+
+
+
+.priceInputs {
+    display: flex;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.priceInputs input {
+    width: 50%; /* 👈 фикс, чтобы не перекрывались */
+    padding: 8px;
+    font-size: 14px;
+    border: none;
+    outline: none;
+    text-align: center;
+    background: white;
+}
+
+/* Разделительная линия */
+.priceInputs input:first-child {
+    border-right: 1px solid #ccc;
+}
+
+@media (max-width: 1000px) {
+    .breadcrumbs {
+        padding: 0 12px;
+        font-size: 12px;
+        margin: 10px 0;
+        word-break: break-word;
+        line-height: 1.4;
+    }
+
+    .breadcrumbs a {
+        font-size: 12px;
+    }
+
+    .page {
+        flex-direction: column;
+        padding: 0 12px;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .card {
+        width: 100%;
+        height: auto;
+        padding: 12px;
+    }
+
+    .card h4 {
+        font-size: 14px;
+        margin: 10px 0;
+    }
+
+    .card p {
+        font-size: 18px;
+        margin: 10px 0;
+    }
+
+    .card button {
+        padding: 8px 20px;
+        font-size: 14px;
+    }
+
+    .mobileFilterBtn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #313131;
+        color: #fff;
+        width: 95%;
+        padding: 12px;
+        font-size: 16px;
+        font-weight: 500;
+        border-radius: 6px;
+        gap: 8px;
+        margin: 0 auto 15px auto;
+    }
+
+    .mobileFilterBtn span {
+        color: #f2e30d;
+        font-weight: bold;
+    }
+
+    .mobileFilterOverlay {
+        position: fixed;
+        top: 0;
+        height: 100%;
+        width: 60%;
+        background: #fff;
+        z-index: 10000;
+        padding: 16px;
+        overflow-y: auto;
+        box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+    }
+
+    .mobileFilterHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: bold;
+        margin-bottom: 16px;
+    }
+
+    .mobileFilterHeader button {
+        font-size: 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    /* Сделать .sidebar внутри мобильного фильтра адаптивным */
+    .mobileFilterOverlay .sidebar {
+        display: block;
+        margin: 0;
+        padding: 0;
+        border-radius: 0;
+        width: 100%;
+        max-height: none;
+    }
+
+    .mobileDropdown {
+        margin-top: 10px;
+        padding: 10px;
+        background: #f9f9f9;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        max-height: 300px;
+        overflow-y: auto;
+    }
+
+    @media (min-width: 1001px) {
+        .mobileDropdown {
+            display: none;
+        }
+    }
+
+
+    .showMoreWrapper {
+        grid-column: span 2;
+    }
+}
+
+
+

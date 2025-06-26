@@ -1,9 +1,14 @@
-import { getContacts } from '../lib/getContacts';
+'use client';
+
 import styles from './ContactCard.module.css';
 
-const ContactCard = async () => {
-    const contacts = await getContacts();
+interface Contact {
+    id: number;
+    phone?: string;
+    email?: string;
+}
 
+export default function ContactCardClient({ contacts }: { contacts: Contact[] }) {
     const phones = contacts.filter(c => c.phone).map(c => c.phone);
     const emailObj = contacts.find(c => c.email);
     const email = emailObj?.email || 'go14b31@yandex.ru';
@@ -50,10 +55,9 @@ const ContactCard = async () => {
             <div className={styles.right}>
                 <iframe
                     src="https://yandex.ru/map-widget/v1/?um=constructor%3Ab4ca9170ed1af82f8a2adc8a3179aeedd956f76956513c9f025ac39ab4dad25a&amp;source=constructor"
-                    width="100%" height="100%" frameBorder="0"></iframe>
+                    width="100%" height="100%" frameBorder="0"
+                ></iframe>
             </div>
         </div>
     );
-};
-
-export default ContactCard;
+}
