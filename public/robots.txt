@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+
+# Запрещаем индексацию служебных страниц
+Disallow: /cart/
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /static/
+
+# Разрешаем индексацию основных разделов
+Allow: /products/
+Allow: /categories/
+Allow: /blog/
+Allow: /promotions/
+Allow: /delivery/
+Allow: /contacts/
+Allow: /partners/
+Allow: /privacy/
+Allow: /stock/
+
+# Указываем расположение sitemap
+Sitemap: https://colordrive.by/sitemap.xml
+
+# Время задержки между запросами (в секундах)
+Crawl-delay: 1 

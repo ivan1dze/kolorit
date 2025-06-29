@@ -1,6 +1,15 @@
-import OntactCardClient from "../components/ContactCard/СontactCardClient";
 import Image from 'next/image';
 import styles from './ContactsPage.module.css';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: 'Контакты — Колорит',
+    description: 'Контактная информация магазина Колорит: адрес, телефон, карта проезда.',
+    openGraph: {
+        title: 'Контакты — Колорит',
+        description: 'Свяжитесь с магазином Колорит. Адрес, телефон, карта проезда.',
+    },
+};
 
 export default function ContactsPage() {
     return (

@@ -1,0 +1,212 @@
+.footer {
+    background-color: #A4A4A4;
+    width: 100%;
+    padding: 40px 16px 24px;
+}
+
+.inner {
+    max-width: 1216px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.columns {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.col {
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-size: 14px;
+}
+
+.menuWrapper {
+    display: flex;
+    gap: 60px;
+}
+
+.menuLeft,
+.menuRight {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+
+.logo {
+    font-size: 34px;
+
+}
+
+.desc {
+    font-size: 18px;
+    color: #1E1E1E;
+}
+
+.link {
+    color: #100E0E;
+    gap: 32px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.person {
+    font-size: 16px;
+    line-height: 1.3;
+    color: #100E0E;
+}
+
+.dev {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: color 0.3s;
+    margin-top: 20px;
+}
+
+.devText {
+    color: #FFFFFF;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.devIcon {
+    filter: grayscale(0.5);
+    transition: filter 0.3s, filter 0.3s;
+}
+
+/* при наведении */
+.dev:hover .devText {
+    color: #3AFF3A;
+}
+
+.dev:hover .devIcon {
+    filter: brightness(0) saturate(100%) invert(74%) sepia(97%) saturate(362%) hue-rotate(68deg) brightness(105%) contrast(105%);
+}
+
+
+
+.bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 32px;
+    flex-wrap: wrap;
+    padding-top: 30px;
+}
+
+.bottomLeft {
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.privacy {
+    text-decoration: underline;
+    color: #000;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.org {
+    font-size: 16px;
+    color: #595858;
+    line-height: 1.4;
+}
+
+.payments {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* показывать перенос только на десктопе */
+.break {
+    display: inline;
+}
+
+.break1 {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .break1 {
+        display: inline;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .columns {
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    .menuWrapper {
+        flex-direction: row;
+        gap: 40px;
+        justify-content: space-between;
+    }
+
+    .menuLeft,
+    .menuRight {
+        gap: 15px;
+    }
+
+    .bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+        padding-top: 0px
+    }
+
+    .payments {
+        justify-content: flex-start;
+    }
+
+    .dev {
+        margin-top: 16px;
+    }
+
+    .devText {
+        font-size: 15px;
+    }
+
+    .link {
+        font-size: 15px;
+    }
+
+    .org {
+        font-size: 14px;
+    }
+
+    .privacy {
+        font-size: 15px;
+    }
+
+    .logo {
+        font-size: 30px;
+    }
+
+    .desc {
+        font-size: 16px;
+    }
+
+    .person {
+        font-size: 15px;
+    }
+}

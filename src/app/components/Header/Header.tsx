@@ -14,7 +14,7 @@ const Header = () => {
 
     // Загружаем контакты
     useEffect(() => {
-        fetch('http://localhost/api/contacts/')
+        fetch('https://api.colordrive.by/api/contacts/')
             .then((res) => res.json())
             .then(setContacts);
     }, []);
@@ -23,7 +23,7 @@ const Header = () => {
     useEffect(() => {
         const delay = setTimeout(() => {
             if (query.length > 1) {
-                fetch(`http://localhost/api/product/search/?search=${query}`)
+                fetch(`https://api.colordrive.by/api/product/search/?search=${query}`)
                     .then(res => res.json())
                     .then(data => {
                         console.log('search result:', data);

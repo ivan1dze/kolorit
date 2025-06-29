@@ -17,7 +17,7 @@ export default function BlogPage() {
     const [posts, setPosts] = useState<BlogPost[]>([]);
 
     useEffect(() => {
-        fetch('http://localhost/api/blog/posts/')
+        fetch('https://api.colordrive.by/api/blog/posts/')
             .then(res => res.json())
             .then(data => setPosts(data));
     }, []);

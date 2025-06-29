@@ -9,7 +9,7 @@ export type Category = {
 
 export async function getCategories(): Promise<Category[]> {
     try {
-        const res = await fetch('http://localhost/api/categories/', { cache: 'no-store' });
+        const res = await fetch('https://api.colordrive.by/api/categories/', { cache: 'no-store' });
         if (!res.ok) throw new Error('Ошибка загрузки категорий');
         return await res.json();
     } catch (e) {

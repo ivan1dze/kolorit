@@ -94,6 +94,12 @@
         padding: 0 12px 30px;
     }
 
+    .imageWrapper {
+        width: 150px;
+        height: 150px;
+        object-fit: contain;
+    }
+
     .card {
         width: 100%;
         height: auto;

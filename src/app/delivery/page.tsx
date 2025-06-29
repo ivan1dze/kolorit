@@ -1,5 +1,14 @@
 import styles from './Delivery.module.css';
-import OntactCardClient from "@/app/components/ContactCard/СontactCardClient";
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: 'Доставка и оплата — Колорит',
+    description: 'Узнайте о способах доставки товаров из магазина Колорит: самовывоз, Европочта, Белпочта. Условия, сроки и оплата.',
+    openGraph: {
+        title: 'Доставка и оплата — Колорит',
+        description: 'Подробная информация о доставке: самовывоз, Белпочта, Европочта. Условия получения и сроки доставки.',
+    },
+};
 
 export default function DeliveryPage() {
     return (

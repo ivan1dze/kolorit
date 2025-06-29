@@ -50,7 +50,7 @@
 }
 
 .button {
-    background-color: #F2E30D;
+    background-color: #f2e30d;
     border: none;
     border-radius: 6px;
     padding: 12px 40px;
@@ -58,10 +58,13 @@
     font-weight: bold;
     cursor: pointer;
     transition: background 0.2s ease;
+    text-decoration: none;
+    color: black;
 }
 
 .button:hover {
-    background-color: #e6d400;
+    background-color: #e6d800; /* чуть темнее жёлтый */
+    box-shadow: 0 0 0 3px rgba(242, 227, 13, 0.3); /* светлое свечение */
 }
 
 .imageWrapper {

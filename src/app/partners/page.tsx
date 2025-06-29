@@ -1,6 +1,15 @@
 import Image from 'next/image';
 import styles from './PartnersPage.module.css';
-import OntactCardClient from "@/app/components/ContactCard/СontactCardClient";
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: 'Сотрудничество — Колорит',
+    description: 'Условия партнёрства с магазином Колорит. Выгодные предложения, индивидуальные заказы и качественный сервис.',
+    openGraph: {
+        title: 'Сотрудничество — Колорит',
+        description: 'Оригинальные материалы, индивидуальные условия, качественное обслуживание. Узнайте больше о партнёрстве с Колорит.',
+    },
+};
 
 export default function PartnersPage() {
     return (

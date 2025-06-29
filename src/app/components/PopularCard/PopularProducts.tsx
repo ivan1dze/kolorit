@@ -9,7 +9,7 @@ export default function PopularProducts() {
     const [products, setProducts] = useState<any[]>([]);
 
     useEffect(() => {
-        fetch('http://localhost/api/product/random/')
+        fetch('https://api.colordrive.by/api/product/random/')
             .then(res => res.json())
             .then(data => setProducts(data.slice(0, 8)));
     }, []);

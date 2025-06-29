@@ -7,14 +7,20 @@ import styles from './ProductPage.module.css';
 import ProductVariations from '@/app/components/ProductVariations';
 import PopularProducts from "@/app/components/PopularCard/PopularProducts";
 
-function parseDescription(description: string) {
+type DescriptionBlock =
+    | { type: 'heading'; content: string }
+    | { type: 'text'; content: string }
+    | { type: 'list'; content: string[] }
+    | { type: 'specs'; content: { key: string; value: string }[] };
+
+
+function parseDescription(description: string): DescriptionBlock[] {
     const blocks = description
         .split(/\n{2,}/)
         .map(block => block.trim())
         .filter(Boolean);
 
     return blocks.map(block => {
-        // Технические характеристики
         if (block.match(/^[-–•*]?\s?[А-Яа-яA-Za-zёЁ]+\s*[:\-–]\s?.+/gm)) {
             const lines = block.split('\n').map(line => line.trim()).filter(Boolean);
             const specs = lines
@@ -24,29 +30,36 @@ function parseDescription(description: string) {
             return { type: 'specs', content: specs };
         }
 
-        // Заголовок
         if (block.match(/^[А-ЯA-ZЁ\s\-]{5,}$/)) {
             return { type: 'heading', content: block };
         }
 
-        // Список
         const lines = block.split('\n').map(line => line.trim()).filter(Boolean);
         if (lines.length > 1) {
             return { type: 'list', content: lines };
         }
 
-        // Просто текст
         return { type: 'text', content: block };
     });
 }
 
+
 export default function ProductClient({ product }: { product: any }) {
     const [qty, setQty] = useState(1);
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const price = parseFloat(product.price);
     const totalPrice = (price * qty).toFixed(2);
     const category = product.category;
-
     const descriptionBlocks = parseDescription(product.description || '');
+    const photos = product.photos || [];
+
+    const handleNext = () => {
+        setCurrentImageIndex((prev) => (prev + 1) % photos.length);
+    };
+
+    const handlePrev = () => {
+        setCurrentImageIndex((prev) => (prev - 1 + photos.length) % photos.length);
+    };
 
     return (
         <>
@@ -61,12 +74,23 @@ export default function ProductClient({ product }: { product: any }) {
                     <div className={styles.leftSide}>
                         <div className={styles.imageWrapper}>
                             <Image
-                                src={product.photos?.[0]?.image || '/placeholder.png'}
+                                src={photos?.[currentImageIndex]?.image || '/placeholder.png'}
                                 alt={product.name}
                                 fill
                                 sizes="(max-width: 598px) 100vw, 598px"
                                 className={styles.productImage}
                             />
+                            {photos.length > 1 && (
+                                <>
+                                    <button className={styles.arrowLeft} onClick={handlePrev}>
+                                        <Image src="/components/arrow-left.svg" alt="Назад" width={24} height={24} />
+                                    </button>
+                                    <button className={styles.arrowRight} onClick={handleNext}>
+                                        <Image src="/components/arrow-right.svg" alt="Вперёд" width={24} height={24} />
+                                    </button>
+                                </>
+
+                            )}
                             <div className={styles.imageOverlay}>
                                 <span>Наличие товара уточняйте у менеджера</span>
                                 <span>Артикул: {product.code}</span>
@@ -103,7 +127,7 @@ export default function ProductClient({ product }: { product: any }) {
                                 const productToSave = {
                                     id: product.id,
                                     title: product.name,
-                                    image: product.photos?.[0]?.image || '/placeholder.png',
+                                    image: photos?.[0]?.image || '/placeholder.png',
                                     price: parseFloat(product.price),
                                     quantity: qty,
                                     variations: product.variations
@@ -125,7 +149,6 @@ export default function ProductClient({ product }: { product: any }) {
                                 localStorage.setItem('cart', JSON.stringify(cart));
                                 window.dispatchEvent(new Event('cartUpdated'));
                             }}
-
                         >
                             Добавить в корзину
                             <Image
@@ -135,6 +158,7 @@ export default function ProductClient({ product }: { product: any }) {
                                 height={20}
                             />
                         </button>
+
                         <ProductVariations
                             productId={product.id}
                             variations={product.variations || []}

@@ -34,7 +34,7 @@ const SecondaryHeader = () => {
     useEffect(() => {
         const timeout = setTimeout(() => {
             if (query.length >= 2) {
-                fetch(`http://localhost/api/product/search/?search=${query}`)
+                fetch(`https://api.colordrive.by/api/product/search/?search=${query}`)
                     .then(res => res.json())
                     .then(data => {
                         setSearchResults(data);
@@ -151,7 +151,7 @@ const SecondaryHeader = () => {
                         <Link href="/delivery">Доставка и оплата</Link>
                         <Link href="/partners">Сотрудничество</Link>
                         <Link href="/blog">Блог</Link>
-                        <Link href="/stock">Акции</Link>
+                        <Link href="/promotions">Акции</Link>
                         <Link href="/contacts">Контакты</Link>
                     </div>
 
@@ -169,7 +169,6 @@ const SecondaryHeader = () => {
                 </nav>
             </div>
 
-            {/* 📱 MOBILE */}
             <div className={styles.mobileHeader}>
                 <div className={styles.iconsleft}>
                     <button onClick={() => setIsMobileMenuOpen(true)} className={styles.iconBtn}>
@@ -272,7 +271,7 @@ const SecondaryHeader = () => {
                         <Link href="/delivery" onClick={handleCloseAll}>Доставка и оплата</Link>
                         <Link href="/partners" onClick={handleCloseAll}>Сотрудничество</Link>
                         <Link href="/blog" onClick={handleCloseAll}>Блог</Link>
-                        <Link href="/stock" onClick={handleCloseAll}>Акции</Link>
+                        <Link href="/promotions" onClick={handleCloseAll}>Акции</Link>
                         <Link href="/contacts" onClick={handleCloseAll}>Контакты</Link>
                     </nav>
                     <div className={styles.bottomIcons}>

@@ -1,5 +1,6 @@
 import styles from './css/PromoBlock.module.css';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const PromoBlock = () => {
     const brandLogos = ['duxone', 'lechler', 'jetapro', 'novol', 'smirdex'];
@@ -22,7 +23,9 @@ const PromoBlock = () => {
                             <li>— Профессиональный подбор красок включая эко-водные системы</li>
                             <li>— Автохимия масла запчасти</li>
                         </ul>
-                        <button className={styles.button}>УЗНАТЬ ЕЩЁ</button>
+                        <Link href="/partners" className={styles.button}>
+                            УЗНАТЬ ЕЩЁ
+                        </Link>
                     </div>
                     <div className={styles.imageWrapper}>
                         <Image
