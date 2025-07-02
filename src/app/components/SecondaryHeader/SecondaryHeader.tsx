@@ -275,7 +275,7 @@ const SecondaryHeader = () => {
                         <Link href="/contacts" onClick={handleCloseAll}>Контакты</Link>
                     </nav>
                     <div className={styles.bottomIcons}>
-                        <button className={styles.iconBtn}>
+                        <button className={styles.iconBtn} onClick={handleCloseAll}>
                             <Image src="/components/header/search-bs.svg" alt="search" width={24} height={24} />
                         </button>
                         {phone && (
@@ -283,10 +283,10 @@ const SecondaryHeader = () => {
                                 <Image src="/components/header/phone-s.svg" alt="phone" width={24} height={24} />
                             </a>
                         )}
-                        <button className={styles.iconBtn}>
+                        <Link href="/cart" className={styles.cartBtn}>
                             <Image src="/components/header/cart-bs.svg" alt="cart" width={24} height={24} />
-                            <span className={styles.badge}>12</span>
-                        </button>
+                            {count > 0 && <span className={styles.badge}>{count}</span>}
+                        </Link>
                     </div>
                 </div>
             )}
@@ -295,9 +295,9 @@ const SecondaryHeader = () => {
                 <div className={styles.catalogMenu}>
                     <div className={styles.catalogTop}>
                         {selectedCategory && (
-                            <button onClick={handleBackToCategories}>&lt;</button>
+                            <button className={styles.buttoncatalogtop} onClick={handleBackToCategories}>&lt;</button>
                         )}
-                        <button onClick={handleCloseAll}>×</button>
+                        <button className={styles.buttoncatalogtop} onClick={handleCloseAll}>×</button>
                     </div>
 
                     {!selectedCategory && (

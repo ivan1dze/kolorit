@@ -285,6 +285,7 @@
     margin-bottom: 32px;
     cursor: pointer;
     transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    color: black;
 }
 
 .addBtn:hover {

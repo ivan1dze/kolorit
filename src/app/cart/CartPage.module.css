@@ -196,6 +196,7 @@
     border: none;
     cursor: pointer;
     transition: background 0.2s, color 0.2s;
+    color: black;
 }
 
 .delivery button:not(:last-child) {
@@ -234,6 +235,7 @@
     cursor: pointer;
     border-radius: 4px;
     transition: background 0.2s;
+    color: black;
 }
 
 .submitBtn:hover {

@@ -173,6 +173,7 @@
     font-size: 14px;
     margin-top: 16px;
     cursor: pointer;
+    color: black;
 }
 
 .resetBtn {
@@ -373,6 +374,7 @@
         background: none;
         border: none;
         cursor: pointer;
+        color: black;
     }
 
     /* Сделать .sidebar внутри мобильного фильтра адаптивным */

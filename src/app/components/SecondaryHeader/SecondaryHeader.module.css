@@ -148,6 +148,10 @@
 }
 
 @media (max-width: 767px) {
+    .buttoncatalogtop {
+        color: black;
+    }
+
     .wrapper {
         display: none;
     }
